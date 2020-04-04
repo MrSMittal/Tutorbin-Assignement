@@ -1,0 +1,28 @@
+<HTML>
+{% load static %}
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="jquery.gdocsviewer.js"></script>
+
+    <style>
+        body {
+            background-color: black;
+            align-content: center;
+            text-align: center;
+            padding-top: 10%;
+        }
+        
+        iframe {
+            height: 80%;
+            width: 80%;
+        }
+    </style>
+
+</head>
+
+<BODY>
+    <iframe class="doc" src="https://docs.google.com/gview?/media/{{ document.file }}&embedded=true"></iframe>
+</BODY>
+
+</HTML>
