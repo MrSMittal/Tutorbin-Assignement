@@ -13,7 +13,9 @@
             padding-top: 10%;
         }
         
-        iframe {
+        iframe,
+        #docimg,
+        #download {
             height: 80%;
             width: 80%;
         }
@@ -23,6 +25,30 @@
 
 <BODY>
     <iframe class="doc" src="https://docs.google.com/gview?/media/{{ document.file }}&embedded=true"></iframe>
+    <div id="download">It seems the file you are trying to access cannot br viewed<a id="downloadanchor" href="#">Please click here to download it.</a></div>
+    <img id="docimg" src="#" />
+
+    <script>
+        $('iframe').hide()
+        $('#download').hide()
+        $('img').hide()
+        var a = "{{ document.file }}";
+        var patt = '^.*\.(doc|DOC|docx|DOCX|pdf|PDF)$';
+        var patt2 = "^.*\.(jpg|JPG|gif|GIF|PNG|png)$";
+        var result2 = a.match(patt2);
+        var result1 = a.match(patt);
+        if (result1) {
+            $('.doc').show()
+        } else if (result2) {
+            $('img').show()
+            $('#docimg').attr('src', '/media/{{ document.file }}')
+        } else {
+            $('#download').show()
+            $('#downloadanchor').attr('href', '/media/{{ document.file }}');
+        }
+    </script>
 </BODY>
+
+
 
 </HTML>
